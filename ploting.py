@@ -49,3 +49,16 @@ ypoints = np.array([3,8,1,10,5,12])
 plt.plot(ypoints,'o-.m',ms = 49,mfc='r',mec='b')
 plt.show()
 
+## Multiple lines with label with grid
+x1 = np.array([0, 1, 2, 3])
+y1 = np.array([3, 8, 1, 10])
+x2 = np.array([0, 1, 2, 3])
+y2 = np.array([6, 2, 7, 11])
+
+plt.plot(x1, y1, x2, y2)
+plt.title('Sports Watch Data', loc='left')
+plt.xlabel('Average Pluse')
+plt.ylabel('Calorie Burnage')
+plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
+plt.show()
+
