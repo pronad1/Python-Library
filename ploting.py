@@ -90,5 +90,4 @@ plt.plot(xpoints, ypoints)
 plt.title('Sports Watch Data', loc='left')
 plt.xlabel('Average Pluse')
 plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
-
 plt.show()
