@@ -62,3 +62,33 @@ plt.ylabel('Calorie Burnage')
 plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
 plt.show()
 
+# Display Multiple Plots
+x1 = np.linspace(0, 10, 100)
+y1 = np.sin(x1)
+
+x2 = np.linspace(0, 10, 100)
+y2 = np.cos(x2)
+
+xpoints = np.array([1, 2, 3, 4, 5])
+ypoints = np.array([2, 3, 5, 7, 11])
+
+plt.subplot(3,1,1)
+plt.plot(x1, y1)
+plt.title('Sports Watch Data', loc='left')
+plt.xlabel('Average Pluse')
+
+plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
+
+plt.subplot(3,1,2)
+plt.plot(x2, y2)
+plt.title('Sports Watch Data', loc='left')
+plt.xlabel('Average Pluse')
+plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
+
+plt.subplot(3,1,3)
+plt.plot(xpoints, ypoints)
+plt.title('Sports Watch Data', loc='left')
+plt.xlabel('Average Pluse')
+plt.grid(color = 'green', linestyle = '--', linewidth = 0.5)
+
+plt.show()
