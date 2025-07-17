@@ -42,3 +42,12 @@ plt.scatter(x, y, c=colors, s=sizes, alpha=0.5, cmap='nipy_spectral')
 plt.colorbar()
 
 plt.show()
+
+x=[0,1,2,3]
+y=[0,1,4,9]
+plt.plot(x,y)
+plt.show()
+
+x = np.linspace(-5,5, 100)
+plt.plot(x, x**2)
+plt.show()
