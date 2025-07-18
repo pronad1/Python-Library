@@ -1,10 +1,13 @@
 Metadata-Version: 2.4
 Name: prosen-pythonlib
-Version: 0.1.1
+Version: 0.1.2
 Summary: A simple greeting package
+Home-page: https://github.com/pronad1/Python-Library
 Author: Prosenjit Mondol
 Author-email: ug2102049@cse.pstu.ac.bd
 License: MIT
+Project-URL: Source, https://github.com/pronad1/Python-Library
+Project-URL: Tracker, https://github.com/pronad1/Python-Library/issues
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Requires-Python: >=3.6
@@ -15,8 +18,10 @@ Dynamic: author-email
 Dynamic: classifier
 Dynamic: description
 Dynamic: description-content-type
+Dynamic: home-page
 Dynamic: license
 Dynamic: license-file
+Dynamic: project-url
 Dynamic: requires-python
 Dynamic: summary
 
