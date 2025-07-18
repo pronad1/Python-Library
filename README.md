@@ -30,7 +30,7 @@ To contribute or develop locally:
 
 1. Clone this repository:
 ```
-git clone https://github.com/prosenjitmondol/python_library.git
+git clone https://github.com/pronad1/python_library.git
 ```
 2. Navigate into the project directory:
 ```
