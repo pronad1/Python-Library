@@ -31,11 +31,13 @@ To contribute or develop locally:
 
 1. Clone this repository:
 ```
-git clone https://github.com/pronad1/python_library.git
+git clone https://github.com/pronad1/Python-Library.git
+
 ```
 2. Navigate into the project directory:
 ```
-   cd python_library
+   cd Python-Library
+
 ```
 3. Create and activate a virtual environment (optional but recommended):
 ```
@@ -55,6 +57,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or suggestions, reach out to [Prosenjit Mondol](https://github.com/prosenjitmondol).
+For questions or suggestions, reach out to [Prosenjit Mondol](https://github.com/pronad1).
 
 
