@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: prosen-pythonlib
-Version: 0.1.2
+Version: 0.1.3
 Summary: A simple greeting package
 Home-page: https://github.com/pronad1/Python-Library
 Author: Prosenjit Mondol
@@ -31,6 +31,7 @@ Dynamic: summary
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 A simple Python library for greeting messages.
+## ðŸ“¦ Available on PyPI: [prosen-pythonlib](https://pypi.org/project/prosen-pythonlib/)
 
 ## Features
 
@@ -57,11 +58,13 @@ To contribute or develop locally:
 
 1. Clone this repository:
 ```
-git clone https://github.com/prosenjitmondol/python_library.git
+git clone https://github.com/pronad1/Python-Library.git
+
 ```
 2. Navigate into the project directory:
 ```
-   cd python_library
+   cd Python-Library
+
 ```
 3. Create and activate a virtual environment (optional but recommended):
 ```
@@ -81,6 +84,6 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or suggestions, reach out to [Prosenjit Mondol](https://github.com/prosenjitmondol).
+For questions or suggestions, reach out to [Prosenjit Mondol](https://github.com/pronad1).
 
 

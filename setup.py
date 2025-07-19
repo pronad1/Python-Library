@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="prosen-pythonlib",
-    version="0.1.2",
+    version="0.1.3",
     packages=find_packages(),
     author="Prosenjit Mondol",
     author_email="ug2102049@cse.pstu.ac.bd",
