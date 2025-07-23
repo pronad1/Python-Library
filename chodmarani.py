@@ -29,3 +29,22 @@ data = {
 sns.displot(data, kind="kde")
 plt.show()
 
+# Poisson Distribution
+x=random.poisson(2,10)
+print(x)
+
+# Difference Between Normal and Poisson Distribution
+data={
+  "normal":random.normal(loc=50, scale=5, size=1000),
+  "poisson": random.poisson(50,1000)
+}
+sns.displot(data, kind="kde")
+plt.show()
+
+# Difference Between Binomial and Poisson Distribution
+data = {
+  "binomial": random.binomial(n=1000, p=0.01, size=1000),
+  "poisson": random.poisson(lam=10, size=1000)
+}
+sns.displot(data, kind="kde")
+plt.show()
