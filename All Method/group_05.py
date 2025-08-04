@@ -84,7 +84,7 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 # Load dataset
 df = pd.read_csv(r"D:\Languages\Python-Library\All Method\rajshahi_housing_final.csv")
 # print(df.shape)
-# df = df.dropna()
+df = df.dropna()
 
 # Features and target
 X = df.iloc[:, :-1]
