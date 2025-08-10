@@ -92,6 +92,9 @@ y = df.iloc[:, -1]
 
 # One-hot encode categorical columns
 X = pd.get_dummies(X)
+print(X)
+# X = pd.get_dummies(X, dtype=int)
+# print(X)
 
 # Split data
 X_train, X_test, y_train_reg, y_test_reg = train_test_split(X, y, test_size=0.2, random_state=42)
