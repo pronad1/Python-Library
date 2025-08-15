@@ -23,7 +23,7 @@ def cramer_rule(A, b):
         Ai = A.copy()
         Ai[:, i] = b  # Replace i-th column with constants
         x[i] = np.linalg.det(Ai) / det_A
-
+        # print(x)
     return x
 
 

@@ -46,7 +46,7 @@ def bisection_method(f, a, b, tol=1e-6, max_iter=100):
         # Plotting current iteration
         plt.scatter(c, f_c, color='red', marker='o', s=50, zorder=5)
         plt.text(c, f_c, f'  Iter {i + 1}', fontsize=8, verticalalignment='bottom')
-        plt.axvline(x=a, color='green', linestyle=':', linewidth=0.8)
+        plt.axvline(x=a, color='yellow', linestyle=':', linewidth=0.8)
         plt.axvline(x=b, color='purple', linestyle=':', linewidth=0.8)
         plt.axvline(x=c, color='red', linestyle=':', linewidth=0.8)
 

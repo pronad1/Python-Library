@@ -14,14 +14,17 @@ def gauss_jordan(A, b):
     # Create augmented matrix
     aug = [A[i] + [b[i]] for i in range(n)]
 
+
     # Forward elimination
     for i in range(n):
         # Make the diagonal element 1
         diag = aug[i][i]
+        # print(diag,"NEXT")
         if diag == 0:
             raise ValueError("Zero pivot encountered!")
         for j in range(i, n + 1):
             aug[i][j] /= diag
+            # print(aug[i][j])
 
         # Make all other elements in column i zero
         for k in range(n):
