@@ -19,7 +19,7 @@ for i in range(n):
 A = np.array(A, dtype=float)
 b = np.array(b, dtype=float)
 
-# Gaussian Elimination (Triangularization)
+# Gaussian Elimination (Triangulation)
 for i in range(n):
     # Partial pivoting
     max_row = i + np.argmax(abs(A[i:, i]))
