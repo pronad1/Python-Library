@@ -28,7 +28,7 @@ def bisection_method(f, a, b, tol=1e-6, max_iter=100):
     plt.axhline(0, color='black', linestyle='--', linewidth=0.8)
     plt.xlabel('x')
     plt.ylabel('f(x)')
-    plt.title('Bisection Method.py Progression')
+    plt.title('Bisection Method.ipynb Progression')
     plt.grid(True)
 
     for i in range(max_iter):
@@ -69,7 +69,7 @@ def bisection_method(f, a, b, tol=1e-6, max_iter=100):
 
 def print_tabular_data(data):
     """Prints the iteration data in a tabular format."""
-    print("\n--- Bisection Method.py Iteration Table ---")
+    print("\n--- Bisection Method.ipynb Iteration Table ---")
     print(f"{'Iteration':<10} | {'a':<15} | {'b':<15} | {'c':<15} | {'f(c)':<15}")
     print("-" * 75)
     for row in data:
