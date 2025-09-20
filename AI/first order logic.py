@@ -33,11 +33,11 @@ def compress_sentences(sentences):
 
     # If no common prefix, join with " and "
     if not prefix:
-        return " and ".join(sentences)
+        return " or ".join(sentences)
 
     # Build compressed sentence
     differences = [" ".join(w[len(prefix):]) for w in word_lists]
-    return " ".join(prefix) + " " + " and ".join(differences)
+    return " ".join(prefix) + " " + " or ".join(differences)
 
 
 if __name__ == "__main__":
@@ -46,18 +46,18 @@ if __name__ == "__main__":
 
     # Collect sentences and variable names
     sentences = []
-    vars_ = []
+    var = []
     for i in range(n):
         text = input(f"Enter sentence {i+1}: ")
         sentences.append(text)
-        vars_.append(chr(80 + i))  # P, Q, R, S...
+        var.append(chr(80 + i))  # P, Q, R, S...
 
     # Example: expression for 3 vars (change as needed)
     def expr(**kwargs):
         # Example: P AND Q AND R
         result = True
-        for v in vars_:
-            result = result and kwargs[v]
+        for v in var:
+            result = result or kwargs[v]
         return result
 
     # Print compressed sentence
@@ -65,4 +65,4 @@ if __name__ == "__main__":
     print("Sentence:", sentence, "\n")
 
     # Show truth table
-    truth_table(vars_, expr)
+    truth_table(var, expr)
