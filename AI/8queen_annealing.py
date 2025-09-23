@@ -1,46 +1,45 @@
 import math
 import random
+import matplotlib.pyplot as plt
 
-
+# -------------------------
+# Distance Function
+# -------------------------
 def distancia(coord1, coord2):
-    lat1 = coord1[0]
-    lon1 = coord1[1]
-    lat2 = coord2[0]
-    lon2 = coord2[1]
+    lat1, lon1 = coord1
+    lat2, lon2 = coord2
     return math.sqrt((lat1 - lat2) ** 2 + (lon1 - lon2) ** 2)
 
-
+# -------------------------
+# Evaluate Route
+# -------------------------
 def evalua_ruta(ruta, coord):
     total = 0
-    for i in range(0, len(ruta) - 1):
-        ciudad1 = ruta[i]
-        ciudad2 = ruta[i + 1]
-        total += distancia(coord[ciudad1], coord[ciudad2])
-    ciudad1 = ruta[-1]
-    ciudad2 = ruta[0]
-    total += distancia(coord[ciudad1], coord[ciudad2])
+    for i in range(len(ruta) - 1):
+        total += distancia(coord[ruta[i]], coord[ruta[i + 1]])
+    # return to start
+    total += distancia(coord[ruta[-1]], coord[ruta[0]])
     return total
 
-
+# -------------------------
+# Hill Climbing Algorithm
+# -------------------------
 def i_hill_climbing(coord):
-    # Crear ruta inicial aleatoria
-    ruta = list(coord.keys())  # Inicializa la ruta con todas las ciudades
+    ruta = list(coord.keys())       # initial route
     mejor_ruta = ruta[:]
     max_iteraciones = 10
 
     while max_iteraciones > 0:
         mejora = False
-        # Genera nueva ruta aleatoria
-        random.shuffle(ruta)
+        random.shuffle(ruta)        # random start
         for i in range(len(ruta)):
             for j in range(i + 1, len(ruta)):
                 ruta_tmp = ruta[:]
                 ruta_tmp[i], ruta_tmp[j] = ruta_tmp[j], ruta_tmp[i]
-                dist = evalua_ruta(ruta_tmp, coord)
-                if dist < evalua_ruta(ruta, coord):
-                    # Se encuentra un vecino que mejora el resultado
-                    mejora = True
+                if evalua_ruta(ruta_tmp, coord) < evalua_ruta(ruta, coord):
                     ruta = ruta_tmp[:]
+                    mejora = True
+
         max_iteraciones -= 1
 
         if evalua_ruta(ruta, coord) < evalua_ruta(mejor_ruta, coord):
@@ -48,7 +47,32 @@ def i_hill_climbing(coord):
 
     return mejor_ruta
 
+# -------------------------
+# Plotting Function
+# -------------------------
+def plot_route(ruta, coord):
+    plt.figure(figsize=(8, 6))
 
+    # Extract coordinates in order
+    x = [coord[city][1] for city in ruta] + [coord[ruta[0]][1]]
+    y = [coord[city][0] for city in ruta] + [coord[ruta[0]][0]]
+
+    # Draw route
+    plt.plot(x, y, '-o', color="blue", linewidth=2, markersize=8)
+
+    # Annotate city names
+    for city in ruta:
+        plt.text(coord[city][1] + 0.1, coord[city][0] + 0.1, city, fontsize=9)
+
+    plt.title("Best Route Found by Hill Climbing")
+    plt.xlabel("Longitude")
+    plt.ylabel("Latitude")
+    plt.grid(True)
+    plt.show()
+
+# -------------------------
+# Main
+# -------------------------
 if __name__ == "__main__":
     coord = {
         'JiloYork': (19.984146, -99.519127),
@@ -64,5 +88,8 @@ if __name__ == "__main__":
     }
 
     mejor_ruta = i_hill_climbing(coord)
-    print(mejor_ruta)
-    print("Distancia total:", evalua_ruta(mejor_ruta, coord))
+    print("Best route:", mejor_ruta)
+    print("Total distance:", evalua_ruta(mejor_ruta, coord))
+
+    # Plot the result
+    plot_route(mejor_ruta, coord)
