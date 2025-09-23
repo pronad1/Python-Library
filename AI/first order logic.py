@@ -1,5 +1,15 @@
 from itertools import product
 
+from itertools import product
+
+def truth_table(express):
+    print(" P | Q | R \n__________")
+    for P,Q in product([0,1],repeat=2):
+        R = express(P,Q)
+        print(f" {P} | {Q} | {R} ")
+express=lambda P,Q: P or Q
+truth_table(express)
+
 # Operators
 OPS = {
     '~': lambda a: not a,
@@ -8,15 +18,7 @@ OPS = {
 }
 
 # Truth table for any number of variables
-def truth_table(vars_, expr_func):
-    print(" | ".join(vars_) + " | Result")
-    print("-" * (4 * len(vars_) + 9))
-    for values in product([False, True], repeat=len(vars_)):
-        assign = dict(zip(vars_, values))
-        result = expr_func(**assign)
-        row = [("1" if assign[v] else "0") for v in vars_]
-        row.append("1" if result else "0")
-        print(" | ".join(row))
+
 
 # Compress multiple sentences
 def compress_sentences(sentences):
@@ -65,4 +67,5 @@ if __name__ == "__main__":
     print("Sentence:", sentence, "\n")
 
     # Show truth table
-    truth_table(var, expr)
+    express=lambda a, b: a and b
+    truth_table(express)
