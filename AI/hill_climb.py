@@ -1,34 +1,40 @@
-import random
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def objective(x):
+    return -x[0] ** 2 + 5
 
 def fun(x):
-    return - ((x - 2) ** 2) + 4
+    return -x ** 2 + 5
 
-def hill_climb(fun, init, step=1, iteration=100):
-    x = init
-    for i in range(iteration):
-        if fun(x) < fun(x+step):
-            x += step
-        elif fun(x) < fun(x-step):
-            x -= step
+arr = np.arange(-5, 5, 0.1)
+plt.plot(arr, fun(arr))
+plt.show()
+
+def generate_neighbors(x, step_size=0.1):
+    return [np.array([x[0] + step_size]), np.array([x[0] - step_size])]
+
+def hill_climbing(objective, initial, n_iterations=100, step_size=0.1):
+    current = np.array([initial])
+    current_eval = objective(current)
+    for i in range(n_iterations):
+        neighbors = generate_neighbors(current, step_size)
+        neighbor_evals = [objective(n) for n in neighbors]
+
+        best_idx = np.argmax(neighbor_evals)
+        if neighbor_evals[best_idx] > current_eval:
+            current = neighbors[best_idx]
+            current_eval = neighbor_evals[best_idx]
+            print(
+                f"Step {i+1}: x = {current[0]:.4f}, f(x) = {current_eval:.4f}")
         else:
+            print("No better neighbors found. Algorithm converged.")
             break
-        print(f"Step {i+1}: f({x}) - f({x+step}) - f({x-step})")
-    return x
+    return current, current_eval
 
-def hill_climb_random(fun, start=-10, stop=10, step=1, iteration=100):
-    x = random.randint(start, stop)
-    di = {}
-    for i in range(iteration):
-        if fun(x) < fun(x+step):
-            x += step
-        elif fun(x) < fun(x-step):
-            x -= step
-        else:
-            di[x] = fun(x)
-            x = random.randint(start, stop)
-        print(f"Step {i+1}: f({x}) - f({x+step}) - f({x-step})")
-    print(di)
-    return [i for i, j in di.items() if j == max(di.values())][0]
 
-# print(hill_climb(fun, random.randint(-10, 10), 1.5))
-print(hill_climb_random(fun, -10, 10, 1.5))
+initial_guess = 2.0
+solution, value = hill_climbing(
+    objective, initial_guess, n_iterations=100, step_size=0.1)
+print(f"\nBest solution x = {solution[0]:.4f}, f(x) = {value:.4f}")
