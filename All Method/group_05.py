@@ -177,6 +177,7 @@ weights_cls, bias_cls = bgd_classifier(X_train_cls_scaled, y_train_cls.values, l
 # Predict
 y_pred_cls = (np.dot(X_test_cls_scaled, weights_cls) + bias_cls > 0).astype(int)
 
+
 # Classification metrics
 print("\n=== Classification Metrics (BGD Classifier) ===")
 print(f"Accuracy:  {accuracy_score(y_test_cls, y_pred_cls):.4f}")
