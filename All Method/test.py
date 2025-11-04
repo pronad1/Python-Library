@@ -1,36 +1,39 @@
 import numpy as np
-import matplotlib.pyplot as plt
+import math
 
-def  f(x):
-    return x**3 - 4 * x + 1
+x=np.array(eval(input("Enter the values of x as a list: ")))
+y=np.array(eval(input("Enter the values of y as a list: ")))
+val=float(input("Enter the value of x to interpolate:"))
 
-def bisection(f,a,b,tol=1e-5):
-    if f(a) * f(b) >= 0:
-        raise ValueError("f(a) and f(b) must have opposite signs")
-    
-    mid= b- f(b)*(a - b)/(f(a)-f(b))
-    if abs(f(mid)) < tol:
-        return mid
-    if f(mid) * f(a) < 0:
-        return bisection(f,a,mid,tol)
-    else:
-        return bisection(f,mid,b,tol)
-    
-    
-root = bisection(f,-1,1)
+n=len(x)
+h=x[1]-x[0]
+u=(val-x[0])/h
 
-n=np.arange(-10,10,0.2)
+diff=np.zeros((n,n))
+diff[:,0]=y
+for i in range(1,n):
+    for j in range(n-i):
+        diff[j,i]=diff[j+1,i-1]-diff[j,i-1]
 
-plt.plot(n,f(n),label='f(x) = x^3 - 4x + 1')
-plt.scatter(root,f(root),color='red')
-plt.axhline(root,color='blue',linestyle='--',label=f'Root at x={root:.5f}')
+result=y[0]
+u_term=1
+for i in range(1,n):
+    u_term*=(u-(i-1))
+    result+=diff[0,i]*u_term/math.factorial(i)
 
-plt.axhline(0,color='black',linestyle='--')
-plt.axvline(0,color='black',linestyle='--')
+print("The interpolated value at x =", val, "is", result)
 
-plt.xlabel('x')
-plt.ylabel('f(x)')
-plt.title('Bisection Method Root Finding')
-plt.legend()
-plt.grid()
-plt.show()
+u=(val - x[-1])/h
+diff=np.zeros((n,n))
+diff[:,0]=y
+for i in range(1,n):
+    for j in range(i,n):
+        diff[j,i]=diff[j,i-1]-diff[j-1,i-1]
+
+result=y[-1]
+u_term=1
+for i in range(1,n):
+    u_term*=(u+(i-1))
+    result+=diff[n-1,i]*u_term/math.factorial(i)
+
+print("The interpolated value at x =", val, "using backward difference is", result) 
