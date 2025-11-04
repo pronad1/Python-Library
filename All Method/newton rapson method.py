@@ -1,24 +1,34 @@
-import math
+import numpy as np
+import matplotlib.pyplot as plt
 
-def f(t):
-    return 5000*(1.05**t) - 10000
+def f(x):
+    return x**3 - 4 * x + 1
 
-def f_prime(t):
-    return 5000*(1.05**t)*math.log(1.05)
+def df(x):
+    return 3 * x**2 - 4
 
-def newton_raphson(t0, tol=1e-6, max_iter=100):
-    print("Iter |   t")
-    print("-----------------")
+def newton_raphson(f,df,x,tol=1e-5,max_iter=100):
     for i in range(max_iter):
-        t1 = t0 - f(t0)/f_prime(t0)
-        print(f"{i+1:3d}  | {t1:.6f}")
-        if abs(t1 - t0) < tol:
-            print("\nConverged in", i+1, "iterations.")
-            return t1
-        t0 = t1
-    print("\nDid not converge within max iterations.")
-    return None
+        x_new = x - f(x) / df(x)
+        if abs(x_new - x) < tol:
+            return x_new
+        x = x_new
+    raise ValueError("Newton-Raphson method did not converge")
 
-t0 = 5
-solution = newton_raphson(t0)
-print("\nApproximate time to double investment =", round(solution, 2), "years")
+x=0.5
+root = newton_raphson(f, df, x)
+n=np.arange(-10,10,0.1)
+
+plt.plot(n,f(n),label='f(x) = x^3 - 4x + 1')
+plt.scatter(root,f(root),color='blue')
+plt.axvline(root,color='red',linestyle='--',label=f'Root at x={root:.5f}')
+
+plt.axhline(0,color='black',linestyle='--')
+plt.axvline(0,color='black',linestyle='--')
+
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.title('Newton-Raphson Method Root Finding')
+plt.legend()
+plt.grid()  
+plt.show()
