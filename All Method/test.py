@@ -1,24 +1,25 @@
 import numpy as np
 
-def cramer(A,b):
+A=np.array(eval(input()),dtype=float)
+b=np.array(eval(input()),dtype=float)
 
-    det_A=np.linalg.det(A)
-    if det_A==0:
-        print("Solution is not possible")
-        return None
-    
-    n=len(b)
-    z=np.zeros(n)
-    for i in range(n):
-        Ai=A.copy()
-        Ai[:,i]=b
-        z[i]=np.linalg.det(Ai)/det_A
+n=len(b)
+x=np.zeros(n)
 
-    return z
+for i in range(n):
+    privot=A[i,i]
+    A[i]=A[i]/privot
+    b[i]=b[i]/privot
+    for j in range(n):
+        factor=A[j,i]
+        if j!=i:
+            A[j]-=factor*A[i]
+            b[j]-=factor*b[i]
 
-A=np.array(eval(input("Enter the value of A as a list")),dtype=float)
-b=np.array(eval(input("Enter the value of b as a list")),dtype=float)
 
-solution = cramer(A,b)
 
-print(solution)
+print(A)
+
+print()
+
+print(b)
