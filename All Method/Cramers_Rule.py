@@ -6,7 +6,7 @@ def cramer_rule(A, b):
         print("Determinant is zero, system has no unique solution!")
         return None
 
-    n = A.shape[0]
+    n = len(b)
     x = np.zeros(n)
     for i in range(n):
         Ai = A.copy()
