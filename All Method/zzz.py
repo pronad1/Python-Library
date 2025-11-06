@@ -1,26 +1,35 @@
 import numpy as np
-import math
+import matplotlib.pyplot as plt
 
-x=np.array(eval(input()),dtype=float)
-y=np.array(eval(input()),dtype=float)
+def f(x):
+    return 0.2 +25 * x -200 * x**2 +675 * x**3 -900 * x**4 +400 * x**5
 
-val=float(input())
+array=np.arange(-0.01,0.82,0.01)
+plt.plot(array,f(array),label='fff')
+plt.legend()
+plt.show()
 
-h=x[1]-x[0]
-u=(val-x[-1])/h
+def trap(f,a,b):
+    return (b-a)*(f(a)+f(b))/2
 
-n=len(x)
-diff=np.zeros((n,n))
-diff[:,0]=y
-for i in range(1,n):
-    for j in range(i,n):
-        diff[j,i]=diff[j,i-1] - diff[j-1,i-1]
+solution = trap(f,0,0.8)
+print(solution)
 
-u_term=1
-result=y[-1]
+plt.plot(array,f(array))
+plt.plot([0,0.8],[f(0),f(0.8)],color='red',label='trap')
+plt.legend()
+plt.show()
 
-for  i in range(1,n):
-    u_term*=(u+(i-1))
-    result += (diff[-1,i]*u_term)/math.factorial(i)
+def sim1(f,a,b):
+    return (b-a)*(f(a)+4*f((a+b)/2)+f(b))/6
 
-print(result)
+
+def sim3(f,a,b):
+    h=(b-a)/3
+    return (3*h/8)*(f(a)+3*f(h+a)+3*f(h+2*a)+f(b))
+
+
+from scipy.interpolate import CubicSpline
+
+a,b,c,d=0,0.8/3,2*0.8/3,0.8
+print()
