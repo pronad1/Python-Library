@@ -1,5 +1,4 @@
 # prosen-pythonlib
-
 [![PyPI Version](https://img.shields.io/pypi/v/prosen-pythonlib)](https://pypi.org/project/prosen-pythonlib/)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
