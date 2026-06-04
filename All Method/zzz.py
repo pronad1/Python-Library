@@ -28,7 +28,6 @@ def sim3(f,a,b):
     h=(b-a)/3
     return (3*h/8)*(f(a)+3*f(h+a)+3*f(h+2*a)+f(b))
 
-
 from scipy.interpolate import CubicSpline
 
 a,b,c,d=0,0.8/3,2*0.8/3,0.8
